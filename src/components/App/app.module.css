@@ -1,0 +1,14 @@
+.app {
+    margin: 10px 0;
+}
+.wrapper {
+    display: flex;
+    justify-content: space-between;
+}
+
+.contacts, .profile {
+    width: 20%;
+}
+.messages {
+    width: 60%;
+}
