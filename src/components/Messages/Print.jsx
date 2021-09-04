@@ -1,7 +1,7 @@
 import React from 'react';
 import styles from "./messages.module.css";
 
-function MessageFooter(props) {
+function Print(props) {
     return (
         <div className={styles.footer}>
             <div className={styles['input-field']}>
@@ -17,4 +17,4 @@ function MessageFooter(props) {
     );
 }
 
-export default MessageFooter;
+export default Print;
