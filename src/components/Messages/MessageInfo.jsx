@@ -1,12 +1,12 @@
-import React from "react";
-import PropTypes from "prop-types";
+import React from 'react';
+import styles from './messages.module.css';
+import PropTypes from 'prop-types'
 
-function MessageInfo(props) {
-  return <div>{props.content}</div>;
+function MessageInfo (props) {
+  return <div className={styles.messageDesign}>{props.content}</div>;
 }
 
 MessageInfo.propTypes = {
   content: PropTypes.string.isRequired,
 };
-
-export default MessageInfo;
+export default MessageInfo

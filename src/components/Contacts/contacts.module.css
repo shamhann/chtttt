@@ -1,16 +1,30 @@
-.contacts {
-    background-color: #f7f8f9;
+*{
+    list-style-type: none;
+    text-decoration: none;
 }
-.form-contacts {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+.contactScroll {
+    height: 100vh;
     padding: 10px;
+    overflow-y: auto;
 }
-.input {
-    border: 0;
+.contactScroll::-webkit-scrollbar {
+    width: 0;
+}
+.contactSearch {
+    width: 300px;
+    margin: auto ;
+}
+.contactSearch input {
+    margin: 20px 0 40px 0;
+    padding: 5px;
+    width: 300px;
+    border: none;
+    outline: none;
+    border-radius: 5px;
+    box-shadow: 0 0 8px rgba(0,0,0,0.2);
 }
 .users {
+    width: 360px;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -30,9 +44,12 @@
 .users-names {
     width: 170px;
     padding: 0 5px;
-    text-align: left;
+    text-align: left
 }
-.fullname {
+.fullName {
+    color: #343a40;
+    font-size: 20px;
+    font-weight: bold;
 }
 .users-text {
     font-size: 14px;
@@ -42,4 +59,10 @@
     font-size: 14px;
     color: #c0c1c1;
     text-align: right;
+}
+.contact-active {
+    background-color: white;
+    width: 360px;
+    box-shadow: 0 0 8px rgba(0,0,0,0.2);
+    border-radius: 5px;
 }

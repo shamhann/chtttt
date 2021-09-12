@@ -1,25 +1,17 @@
 import React from 'react'
 import styles from './messages.module.css'
-import MessagesHeader from './MessagesHeader'
+import TopBlock from './TopBlock'
 import MessagesBody from './MessagesBody'
-import MessageFooter from './MessageFooter'
+import Print from './Print'
 
 function Messages(props) {
 
-    return (
-      <div>
-        <div className={styles.messages}>
-          <div className={styles['messages-header']}>
-            <MessagesHeader item={props.item} />
-          </div>
-          <div className={styles['messages-body']}>
-            <MessagesBody item={props.item} />
-          </div>
-          <div className={styles['message-footer']}>
-            <MessageFooter item={props.item} />
-          </div>
-        </div>
-      </div>
+  return (
+    <div className={styles.messages}>
+      <TopBlock />
+      <MessagesBody />
+      <Print />
+    </div>
     );
 }
 

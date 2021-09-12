@@ -1,43 +1,43 @@
-
-
 //this is Profile redux-thunk....
+import { messagesDownScroll } from '../../messagesDownScroll'
+
 const initialState = {
-  item: [],
-  filter: "",
+  messages: [],
   loading: false,
-  messageText: "",
-  loadingMessage: false,
+  LoadingMessage: false,
+  filter: '',
   searchForm: false,
   showProfile: false,
+  messageText: "",
 };
 
 export default function messages(state = initialState, action) {
   switch (action.type) {
-    case "message/load/start":
+    case 'messages/load/start':
       return {
         ...state,
         loading: true,
+        messages: [],
       };
-
-    case "message/load/success":
+    case 'messages/load/success':
       return {
         ...state,
-        item: action.payload,
+        messages: action.payload,
         loading: false,
       };
 
-    case "message/send/start":
+    case 'message/send/start':
       return {
         ...state,
-        loadingMessage: true,
-        messageText: "",
+        LoadingMessage: true,
+        messageText: '',
       };
 
-    case "message/send/success":
+    case 'message/send/success':
       return {
         ...state,
-        item: [...state.item, action.payload],
-        loadingMessage: false,
+        messages: [...state.messages, action.payload],
+        LoadingMessage: false,
       };
 
     case "filter/set":
@@ -55,7 +55,7 @@ export default function messages(state = initialState, action) {
     case "DELETE":
       return {
         ...state,
-        item: state.item.filter((item) => item._id !== action.payload),
+        messages: state.messages.filter((item) => item._id !== action.payload),
       };
 
     case "set/message/text":
@@ -82,21 +82,22 @@ export default function messages(state = initialState, action) {
 export const loadMessages = (id) => {
   return (dispatch) => {
     dispatch({
-      type: "message/load/start",
+      type: 'messages/load/start',
     });
-
     fetch(
-      `https://api.intocode.ru:8001/api/messages/5f2ea3801f986a01cefc8bcd/${id}`
+      `https://api.intocode.ru:8001/api/messages/5f2ea3801f986a01cefc8bcd/${id}`,
     )
-      .then((response) => response.json())
+      .then((res) => res.json())
       .then((json) => {
         dispatch({
-          type: "message/load/success",
+          type: 'messages/load/success',
           payload: json,
+          id: id,
         });
+        messagesDownScroll();
       })
       .catch((error) => {
-        console.log(error);
+        console.error(error);
       });
   };
 };
@@ -134,26 +135,27 @@ export const setMessageText = (messageText) => {
 export const sendMessage = (myId, contactId, messageText) => {
   return (dispatch) => {
     dispatch({
-      type: "message/send/start",
+      type: 'message/send/start',
     });
-    fetch("https://api.intocode.ru:8001/api/messages", {
-      method: "POST",
+    fetch('https://api.intocode.ru:8001/api/messages', {
+      method: 'POST',
       body: JSON.stringify({
         myId: `${myId}`,
         contactId: `${contactId}`,
-        type: "text",
-        content: messageText,
+        type: 'text',
+        content: `${messageText}`,
       }),
       headers: {
-        "Content-type": "application/json",
+        'Content-type': 'application/json',
       },
     })
       .then((response) => response.json())
       .then((json) => {
         dispatch({
-          type: "message/send/success",
+          type: 'message/send/success',
           payload: json,
         });
+        messagesDownScroll();
       })
       .catch((error) => {
         console.error(error);

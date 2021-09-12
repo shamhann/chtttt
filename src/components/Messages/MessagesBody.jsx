@@ -1,17 +1,34 @@
-import React from 'react'
-import styles from "./messages.module.css";
+import React, { useEffect } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
+import { useParams } from 'react-router-dom'
+import { loadMessages } from '../../redux/ducks/messages'
+import styles from './messages.module.css'
+import ContentBlock from './ContentBlock'
 
-function MessagesBody(props) {
+function MessagesBody (props) {
 
-    return (
-        <div className={styles.body}>
-          <div className={styles['to-message']}>
-            <div className={styles['message-text']}>fyfyf</div>
-            <div className={styles['message-time']}>13:50</div>
-          </div>
+  const dispatch = useDispatch();
+  const messages = useSelector((state) => state.messages.messages);
+  const contactsId = useParams().id;
+  const filter = useSelector((state) => state.messages.filter);
+  const filteredMessages = messages.filter(
+    (messages) =>
+      messages.content.toUpperCase().indexOf(filter.toUpperCase()) > -1
+  );
 
-        </div>
-    );
+  useEffect(() => {
+    dispatch(loadMessages(contactsId));
+  }, [contactsId, dispatch]);
+
+  return (
+    <div className={styles.chatContainer}>
+      <div>
+        {filteredMessages.map((message) => {
+          return <ContentBlock  message={message} key={message.id} />;
+        })}
+      </div>
+    </div>
+  );
 }
 
-export default MessagesBody;
+export default MessagesBody

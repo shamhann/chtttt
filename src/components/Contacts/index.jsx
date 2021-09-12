@@ -1,30 +1,41 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import styles from './contacts.module.css';
 import { useDispatch, useSelector } from 'react-redux';
-import FormContacts from './FormContacts'
 import { loadContacts } from '../../redux/ducks/contacts';
 import ContactBlock from './ContactBlock'
 
 
 function Contacts(props) {
   const contacts = useSelector(state => state.contacts.contacts);
-  const selectedId = useSelector(state => state.contacts.selectedContactsId);
   const dispatch = useDispatch();
-  const handleSelectedContact =() => {
-    dispatch((contacts._id))
-  }
+
+  const [value, setValue] = useState('');
+
+  // const filteredNews = contacts.filter(contact => {
+  //   return contact.name.toLowerCase().includes(value.toLowerCase())
+  // })
+  const filteredContacts = contacts.filter(contact =>{
+    return contact.fullname?.toLowerCase().includes(value.toLowerCase())
+  })
+
     useEffect(() => {
       dispatch(loadContacts())
-    },[dispatch])
+    },[dispatch]);
+
   return (
-  <div onClick={handleSelectedContact}>
-    {contacts.map(item => {
-      return   <div className={styles.contacts}>
-        <FormContacts />
-          <div >
-            <ContactBlock key={item.id} item={item}/>
-        </div>
-      </div>
+  <div  className={styles.contactScroll}>
+    <div className={styles.contactSearch}>
+      <input
+        className="contactForm"
+        type="text"
+        placeholder={'Search contact'}
+        onChange={(event) => setValue(event.target.value) }
+      />
+    </div>
+    {filteredContacts.map(item => {
+      return <ul>
+              <ContactBlock  item={item}  key={item._id}/>
+            </ul>
     })}
   </div>
   );

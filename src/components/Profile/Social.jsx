@@ -8,7 +8,7 @@ function Social (props) {
       <div className={styles.social}>
         <div >
           <i className="fa fa-instagram" aria-hidden="true"></i> <b>{props.profile.socials === undefined
-          ? '' : props.profile.socials.instagram }</b>
+          ? '' :  props.profile.socials.instagram }</b>
         </div>
         <div>
           <i className="fa fa-twitter" aria-hidden="true"></i>  <b>{props.profile.socials === undefined

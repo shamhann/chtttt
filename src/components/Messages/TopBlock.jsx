@@ -1,15 +1,55 @@
-import React from "react";
-import { useDispatch, useSelector } from "react-redux";
-import styles from "./messages.module.css";
+import React from 'react';
+import styles from './messages.module.css';
+import { useSelector } from 'react-redux'
+import { useParams } from 'react-router-dom';
+import ReactLoading from 'react-loading';
 
-function Header() {
+
+function TopBlock (props) {
+  const params = useParams().id;
+  const contacts = useSelector((state) => state.contacts.contacts);
+  const contact = contacts.find((contact) => contact._id === params);
+  const loadingMessages = useSelector((state) => state.messages.loading);
+
   return (
     <div className={styles.header}>
       <div className={styles["header-center-block"]}>
+        <div className={styles.headerIcons}>
+          <span className="material-icons">
+            search
+          </span>
+        </div>
+        <div className={styles.messageName}>
+            {loadingMessages ? (
+              <div className={styles.headerLoading}>
+                  Подключение...
+                  <ReactLoading
+                    color='#c0c0c0'
+                    type="spin"
+                    width={16} height={16}
+                  />
+              </div>
+            ) : (
+              <div className={styles.messageName}>
+                {contact?.fullname}
+                <div className={styles.messageAuthorNameOnline}>
+                  {contact?.online === true ? (
+                    <span className="material-icons">circle</span>
+                  ) : (
+                    ""
+                  )}
+                </div>
+              </div>
+            )}
 
+        </div>
+     <div className={styles.headerIcons}>
+       <span className="material-icons">call</span>
+       <span className="material-icons">menu</span>
+     </div>
       </div>
     </div>
   );
 }
 
-export default Header;
+export default TopBlock

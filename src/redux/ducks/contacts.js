@@ -18,6 +18,11 @@ export default function contacts(state = initialState, action) {
         contacts: action.payload,
         loading: false
       }
+    case "contacts/selected":
+      return {
+        ...state,
+        selectedContactId: action.payload,
+      };
     default:
       return state;
   }
@@ -38,21 +43,13 @@ export const loadContacts = (id) => {
       })
   }
 }
-// export const loadContactsMessages = (id) => {
-//   return (dispatch) => {
-//     dispatch({
-//       type: 'contacts/messages/load/start'
-//     });
-//     fetch('https://api.intocode.ru:8001/api/contacts/messages/myId/contactId')
-//       .then(res =>res.json())
-//       .then((json) => {
-//         dispatch({
-//           type: 'contacts/messages/load/success',
-//           payload: json
-//         })
-//       })
-//   }
-// }
+export const selectedContact = (contactId) => {
+  return {
+    type: "contacts/selected",
+    payload: contactId,
+  };
+};
+
 // тут экшн креэйторы
 
 // тут санки

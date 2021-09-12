@@ -15,7 +15,7 @@ function Name (props) {
       </h3>
 
       <div className={styles.email}>
-        { props.profile !== undefined ? props.profile.username : null}
+        { props.profile !== undefined ? <div>@{ props.profile.username}</div> : null}
       </div>
 
       <div className={styles.icon}>
