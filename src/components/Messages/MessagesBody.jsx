@@ -11,10 +11,10 @@ function MessagesBody (props) {
   const messages = useSelector((state) => state.messages.messages);
   const contactsId = useParams().id;
   const filter = useSelector((state) => state.messages.filter);
-  const filteredMessages = messages.filter(
-    (messages) =>
-      messages.content.toUpperCase().indexOf(filter.toUpperCase()) > -1
-  );
+  // const filteredMessages = messages.filter(
+  //   (messages) =>
+  //     messages.content.toUpperCase().indexOf(filter.toUpperCase()) > -1
+  // );
 
   useEffect(() => {
     dispatch(loadMessages(contactsId));
@@ -23,8 +23,8 @@ function MessagesBody (props) {
   return (
     <div className={styles.chatContainer}>
       <div>
-        {filteredMessages.map((message) => {
-          return <ContentBlock  message={message} key={message.id} />;
+        {messages.map((message) => {
+          return <ContentBlock className={styles.contentBlock} message={message} key={message.id} />;
         })}
       </div>
     </div>

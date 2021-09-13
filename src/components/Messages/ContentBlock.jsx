@@ -19,11 +19,15 @@ function ContentBlock (props) {
   }
   if (toUserId === profileId) {
     return (
-      <InboxMessage content={props.message.content} contact={props.contact} />
+      <InboxMessage  message={props.message}
+                     content={props.message.content}
+                     contact={props.contact} />
     );
   }
   return (
-    <OutboxMessage message={props.message} contact={props.contact} content={props.message.content} />
+    <OutboxMessage message={props.message}
+                   contact={props.contact}
+                   content={props.message.content} />
   );
 }
 

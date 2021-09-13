@@ -13,7 +13,7 @@ export default function application(state = initialState, action) {
     case 'profile/load/success':
       return {
         ...state,
-        profiles:[...state.profiles,action.payload],
+        profiles:action.payload,
         loading: false
       }
     default:

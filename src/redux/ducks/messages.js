@@ -102,27 +102,6 @@ export const loadMessages = (id) => {
   };
 };
 
-//deleting messages...
-export const setDeleteMessages = (id) => {
-  return (dispatch) => {
-    dispatch({
-      type: "delete/message/start",
-      payload: id,
-    });
-    fetch(
-      `https://api.intocode.ru:8001/api/messages/5f2ea3801f986a01cefc8bcd/${id}`,
-      {
-        method: "DELETE",
-      }
-    ).then(() => {
-      dispatch({
-        type: "DELETE",
-        payload: id,
-      });
-    });
-  };
-};
-
 //получение сообщений...
 export const setMessageText = (messageText) => {
   return {
@@ -163,15 +142,6 @@ export const sendMessage = (myId, contactId, messageText) => {
   };
 };
 
-//фильтрация сообщений
-export const setFilterMessages = (text) => {
-  return (dispatch) => {
-    dispatch({
-      type: "filter/set",
-      payload: text,
-    });
-  };
-};
 
 export const setSearchForm = () => {
   return {

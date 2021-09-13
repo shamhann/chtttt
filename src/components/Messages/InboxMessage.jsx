@@ -5,21 +5,34 @@ import { useSelector } from 'react-redux'
 import Avatar from '../App/Avatar'
 import PropTypes from 'prop-types';
 import 'material-icons/iconfont/material-icons.css';
+import dayjs from 'dayjs'
 
 
 function InboxMessage (props) {
+  const readMessage = props.message.read;
+  const timeSendMessage = props.message.time;
   const id = useParams().id;
   const contacts = useSelector((state) => state.contacts.contacts);
   const contact = contacts.find((contact) => contact._id === id);
-
+//Ibox  IboxMsge
   return (
-    <div className={styles.chatMsg}>
-      <div className={styles.MsgMe}>
-        <div >
-          <Avatar size={'small'} online={false} contact={contact} />
+    <div className={styles.Ibox}>
+      <Avatar size={'small'} online={false} contact={contact} />
+      <div className={styles.IboxMsge}>
+        <div className={styles.messageText}>{props.content} </div>
+        <div className={styles.messageTime}>
+          {dayjs(timeSendMessage).format('HH:mm')}
         </div>
         <div>
-          <div>{props.content}</div>
+          {readMessage === true ? (
+            <div className={styles.check}>
+              <span className="material-icons">done_all</span>
+            </div>
+          ) : (
+            <div className={styles.check}>
+              <span className="material-icons">check</span>
+            </div>
+          )}
         </div>
       </div>
     </div>

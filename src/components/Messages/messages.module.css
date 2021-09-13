@@ -40,41 +40,53 @@
 .chatContainer::-webkit-scrollbar {
     width: 0;
 }
-
-.chatMsg, .chatMsgMe {
+/*
+исходящие сообщения
+ */
+.Outbox {
+    position: relative;
+    left: 480px;
+    display: flex;
+}
+ .OutboxMsge {
     display: flex;
     max-width: 300px;
     padding: 10px;
     margin-bottom: 10px;
     background-color: #c9fdf7;
-    border-radius: 0 12px 12px 12px ;
+    border-radius: 15px 15px 0 15px ;
     margin-left: 10px;
 }
-
-.Outbox {
-    display: flex;
-}
-
 .messageText {
     font-size: 20px;
     margin-right: 10px;
 }
-
 .messageTime {
     transform: translateY(16px);
     font-size: 14px;
     margin: 0 15px;
 }
-
 .check span {
     transform: translateY(16px);
     font-size: 20px;
     color: blue;
 }
-
-.MsgMe {
-    border: 10px solid red;
+/*
+входящие сообщения
+ */
+.Ibox {
+    display: flex;
 }
+.IboxMsge {
+    display: flex;
+    max-width: 300px;
+    padding: 10px;
+    margin-bottom: 10px;
+    background-color: #c9fdf7;
+    border-radius: 0 15px 15px 15px ;
+    margin-left: 10px;
+}
+
 .avatar {
     width: 35px;
     max-height: 35px;
@@ -83,9 +95,9 @@
     align-items: center;
     padding:  5px 10px;
     font-size: 15px;
-    background-color: #7cbbf2;
+    background-color: #6aa7ee;
     border-radius: 50%;
-    box-shadow: inset 0 0 20px 2px rgba(0, 0, 0, 0.6);
+    box-shadow: 0 0 8px rgba(0,0,0,0.6);
 }
 .messageDesign {
     width: 20%;
