@@ -23,6 +23,13 @@
     border-radius: 5px;
     box-shadow: 0 0 8px rgba(0,0,0,0.2);
 }
+.messageAuthorNameOnline span {
+    font-size: 12px;
+    color: #32B40FFF;
+    margin-left: 5px;
+    position: absolute;
+    bottom: 40px;
+}
 .users {
     width: 360px;
     display: flex;
@@ -40,6 +47,7 @@
     background-color: #6aa7ee;
     border-radius: 50%;
     box-shadow: 0 0 8px rgba(0,0,0,0.6);
+    position: relative;
 
 }
 .users-names {

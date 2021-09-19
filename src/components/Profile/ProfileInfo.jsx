@@ -1,17 +1,17 @@
-import React from 'react';
-import Name from './Name';
-import Social from './Social';
-import Media from './Media';
+import React from "react";
+import Name from "./Name";
+import Social from "./Social";
+import Media from "./Media";
 import { Route } from "react-router-dom";
 
-function ProfileInfo (props) {
+function ProfileInfo({ profile }) {
   return (
-    <div className='animate__animated animate__fadeInRightBig'>
-     <Route exact path="/contact/:id?" >
-       <Name profile={props.profile} key={props.profile.id}/>
-       <Social profile={props.profile}  />
-       <Media contact={props.contact}/>
-     </Route>
+    <div className="animate__animated animate__fadeInRightBig">
+      <Route exact path="/contact/:id?">
+        <Name profile={profile} key={profile.id} />
+        <Social profile={profile} />
+        <Media />
+      </Route>
     </div>
   );
 }

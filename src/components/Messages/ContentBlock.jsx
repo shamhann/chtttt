@@ -1,38 +1,29 @@
-import React from 'react'
-import { useSelector } from 'react-redux'
-import MessageInfo from './MessageInfo'
-import InboxMessage from './InboxMessage'
-import OutboxMessage from './OutboxMessage';
-import PropTypes from 'prop-types';
+import React from "react";
+import { useSelector } from "react-redux";
+import InboxMessage from "./InboxMessage";
+import OutboxMessage from "./OutboxMessage";
+import PropTypes from "prop-types";
+import styles from "./messages.module.css";
 
-
-function ContentBlock (props) {
+function ContentBlock({ message }) {
   const profileId = useSelector((state) => state.application.profiles._id);
-  const toUserId = props.message.toUserId;
+  const toUserId = message.toUserId;
   const loadingMessages = useSelector((state) => state.messages.loading);
 
   if (loadingMessages) {
-    return '';
+    return "";
   }
-  if (props.message.type === 'info') {
-    return <MessageInfo content={props.message.content} />;
+  if (message.type === "info") {
+    return <div className={styles.messageDesign}>{message.content}</div>;
   }
   if (toUserId === profileId) {
-    return (
-      <InboxMessage  message={props.message}
-                     content={props.message.content}
-                     contact={props.contact} />
-    );
+    return <InboxMessage message={message} />;
   }
-  return (
-    <OutboxMessage message={props.message}
-                   contact={props.contact}
-                   content={props.message.content} />
-  );
+  return <OutboxMessage message={message} />;
 }
 
 ContentBlock.propTypes = {
   message: PropTypes.object.isRequired,
 };
 
-export default ContentBlock
+export default ContentBlock;

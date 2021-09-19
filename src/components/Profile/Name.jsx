@@ -1,23 +1,22 @@
-import React from 'react'
-import styles from './profile.module.css'
+import React from "react";
+import styles from "./profile.module.css";
 
-function Name (props) {
-
+function Name({ profile }) {
   return (
-    <div >
-
+    <div>
       <div className={styles.avatar}>
-        {props.profile !== undefined ? props.profile.fullname.substr(0, 1) : null}
+        {profile !== undefined ? profile.fullname.substr(0, 1) : null}
       </div>
 
-      <h3 className={styles.name} >
-        {props.profile !== undefined ? props.profile.fullname : null}
+      <h3 className={styles.name}>
+        {profile !== undefined ? profile.fullname : null}
+        <div className={styles.profileAuthorNameOnline}>
+          {profile?.online === true ? <div> в сети<span className="material-icons">circle</span></div>: "был(а) недавно"}
+        </div>
       </h3>
-
       <div className={styles.email}>
-        { props.profile !== undefined ? <div>@{ props.profile.username}</div> : null}
+        {profile !== undefined ? <div>@{profile.username}</div> : null}
       </div>
-
       <div className={styles.icon}>
         <div>
           <i className="fa fa-phone" aria-hidden="true"></i>
@@ -30,7 +29,7 @@ function Name (props) {
         </div>
       </div>
     </div>
-  )
+  );
 }
 
-export default Name
+export default Name;

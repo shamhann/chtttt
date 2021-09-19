@@ -1,4 +1,28 @@
-
+.profileScroll {
+    height: 100vh;
+    padding: 10px;
+    overflow-y: auto;
+}
+.profileScroll::-webkit-scrollbar {
+    width: 0;
+}
+.profile-title {
+   padding: 0 0 30px 30px;
+    margin: auto;
+}
+.profileAuthorNameOnline {
+    text-align: center;
+    margin: auto;
+    font-size: 16px;
+    padding: 10px;
+}
+.profileAuthorNameOnline span {
+    text-align: center;
+    margin: auto;
+    font-size: 12px;
+    padding: 10px;
+    color:  #32B40FFF;
+}
 .avatar{
     width: 100px;
     height: 100px;

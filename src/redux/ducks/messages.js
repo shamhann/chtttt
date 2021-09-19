@@ -1,13 +1,10 @@
 //this is Profile redux-thunk....
-import { messagesDownScroll } from '../../messagesDownScroll'
 
 const initialState = {
   messages: [],
   loading: false,
   LoadingMessage: false,
-  filter: '',
-  searchForm: false,
-  showProfile: false,
+  loadingDeleteMessage: false,
   messageText: "",
 };
 
@@ -36,26 +33,8 @@ export default function messages(state = initialState, action) {
     case 'message/send/success':
       return {
         ...state,
-        messages: [...state.messages, action.payload],
         LoadingMessage: false,
-      };
-
-    case "filter/set":
-      return {
-        ...state,
-        filter: action.payload,
-      };
-
-    case "searchForm/set":
-      return {
-        ...state,
-        searchForm: !state.searchForm,
-      };
-
-    case "DELETE":
-      return {
-        ...state,
-        messages: state.messages.filter((item) => item._id !== action.payload),
+        messages: [...state.messages, action.payload],
       };
 
     case "set/message/text":
@@ -63,22 +42,27 @@ export default function messages(state = initialState, action) {
         ...state,
         messageText: action.payload,
       };
-
-    case "change/showProfile":
+    case 'message/delete/start':
       return {
         ...state,
-        showProfile: action.payload,
-      };
+        loadingDeleteMessage: true,
+      }
+    case 'message/delete/success':
+      return {
+        ...state,
+        loadingDeleteMessage: false,
+        ...state,
+        messages: state.messages.filter(
+          (message) => message._id !== action.payload,
+        ),
+      }
 
     default:
       return state;
   }
 }
 
-//this is Contacts thunk....
-
-
-//подгрузка сообщении...
+//подгрузка сообщений
 export const loadMessages = (id) => {
   return (dispatch) => {
     dispatch({
@@ -94,7 +78,6 @@ export const loadMessages = (id) => {
           payload: json,
           id: id,
         });
-        messagesDownScroll();
       })
       .catch((error) => {
         console.error(error);
@@ -102,7 +85,7 @@ export const loadMessages = (id) => {
   };
 };
 
-//получение сообщений...
+//получение сообщений
 export const setMessageText = (messageText) => {
   return {
     type: "set/message/text",
@@ -134,28 +117,22 @@ export const sendMessage = (myId, contactId, messageText) => {
           type: 'message/send/success',
           payload: json,
         });
-        messagesDownScroll();
       })
-      .catch((error) => {
-        console.error(error);
-      });
   };
 };
-
-
-export const setSearchForm = () => {
-  return {
-    type: "searchForm/set",
+export const removeMessage = (id) => {
+  return (dispatch) => {
+    dispatch({
+      type: 'message/delete/start',
+    });
+    fetch(`https://api.intocode.ru:8001/api/messages/${id}`, {
+      method: 'DELETE',
+    })
+      .then((json) => {
+        dispatch({
+          type: 'message/delete/success',
+          payload: id,
+        });
+      })
   };
 };
-
-export const changeShowProfile = (showProfile) => {
-  return {
-    type: "change/showProfile",
-    payload: !showProfile,
-  };
-};
-
-// тут экшн креэйторы
-
-// тут санки
