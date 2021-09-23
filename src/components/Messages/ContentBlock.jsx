@@ -1,9 +1,9 @@
 import React from "react";
 import { useSelector } from "react-redux";
-import InboxMessage from "./InboxMessage";
 import OutboxMessage from "./OutboxMessage";
 import PropTypes from "prop-types";
 import styles from "./messages.module.css";
+import IncomingMessage from './IncomingMessage'
 
 function ContentBlock({ message }) {
   const profileId = useSelector((state) => state.application.profiles._id);
@@ -17,7 +17,7 @@ function ContentBlock({ message }) {
     return <div className={styles.messageDesign}>{message.content}</div>;
   }
   if (toUserId === profileId) {
-    return <InboxMessage message={message} />;
+    return <IncomingMessage message={message} />;
   }
   return <OutboxMessage message={message} />;
 }

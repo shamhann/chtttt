@@ -7,7 +7,7 @@ import PropTypes from "prop-types";
 import "material-icons/iconfont/material-icons.css";
 import dayjs from "dayjs";
 
-function InboxMessage({ message }) {
+function IncomingMessage({ message }) {
   const readMessage = message.read;
   const timeSendMessage = message.time;
   const id = useParams().id;
@@ -15,9 +15,9 @@ function InboxMessage({ message }) {
   const contact = contacts.find((contact) => contact._id === id);
 
   return (
-    <div className={styles.Ibox}>
+    <div className={styles.Incoming}>
       <Avatar size={"small"} online={false} contact={contact} />
-      <div className={styles.IboxMsge}>
+      <div className={styles.IncomingMessage}>
         <div className={styles.messageText}>{message.content} </div>
         <div className={styles.messageTime}>
           {dayjs(timeSendMessage).format("HH:mm")}
@@ -38,7 +38,7 @@ function InboxMessage({ message }) {
   );
 }
 
-InboxMessage.propTypes = {
+IncomingMessage.propTypes = {
   content: PropTypes.string.isRequired,
 };
-export default InboxMessage;
+export default IncomingMessage;
