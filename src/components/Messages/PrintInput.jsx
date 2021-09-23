@@ -1,6 +1,6 @@
 import React from "react";
 import styles from "./messages.module.css";
-import { setMessageText } from "../../redux/ducks/messages";
+import { getMessageText } from "../../redux/ducks/messages";
 import { useDispatch, useSelector } from "react-redux";
 
 function PrintInput(props) {
@@ -8,7 +8,7 @@ function PrintInput(props) {
   const dispatch = useDispatch();
 
   const handleChange = (e) => {
-    dispatch(setMessageText(e.target.value));
+    dispatch(getMessageText(e.target.value));
   };
   return (
     <div className={styles["input-field"]}>

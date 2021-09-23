@@ -50,6 +50,3 @@ export const selectedContact = (contactId) => {
   };
 };
 
-// тут экшн креэйторы
-
-// тут санки

@@ -2,8 +2,9 @@ import React from "react";
 import dayjs from "dayjs";
 import styles from "./messages.module.css";
 import PropTypes from "prop-types";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from 'react-redux'
 import { removeMessage } from "../../redux/ducks/messages";
+import ReactLoading from 'react-loading'
 
 function OutboxMessage({ message }) {
   const dispatch = useDispatch();
@@ -15,6 +16,7 @@ function OutboxMessage({ message }) {
   const handleDeleteMessage = () => {
     dispatch(removeMessage(messageId));
   };
+  const loadingDeleteMessage = useSelector(state => state.messages.loadingDeleteMessages)
   return (
     <div className={styles.Outbox}>
       <div className={styles.OutboxMsge}>
@@ -24,7 +26,12 @@ function OutboxMessage({ message }) {
         </div>
         <div>
           <button className={styles.deleteButton} onClick={handleDeleteMessage}>
-            <span className="material-icons">delete</span>
+            { loadingDeleteMessage ?  <ReactLoading
+              color="#c0c0c0"
+              type="spin"
+              width={16}
+              height={16}
+            /> :  <span className="material-icons">delete</span>}
           </button>
           {readMessage === true ? (
             <div className={styles.check}>

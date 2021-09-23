@@ -1,10 +1,8 @@
-//this is Profile redux-thunk....
-
 const initialState = {
   messages: [],
   loading: false,
   LoadingMessage: false,
-  loadingDeleteMessage: false,
+  loadingDeleteMessages: false,
   messageText: "",
 };
 
@@ -37,7 +35,7 @@ export default function messages(state = initialState, action) {
         messages: [...state.messages, action.payload],
       };
 
-    case "set/message/text":
+    case "get/message/text":
       return {
         ...state,
         messageText: action.payload,
@@ -45,13 +43,12 @@ export default function messages(state = initialState, action) {
     case 'message/delete/start':
       return {
         ...state,
-        loadingDeleteMessage: true,
+        loadingDeleteMessages: true,
       }
     case 'message/delete/success':
       return {
         ...state,
-        loadingDeleteMessage: false,
-        ...state,
+        loadingDeleteMessages: false,
         messages: state.messages.filter(
           (message) => message._id !== action.payload,
         ),
@@ -79,21 +76,18 @@ export const loadMessages = (id) => {
           id: id,
         });
       })
-      .catch((error) => {
-        console.error(error);
-      });
   };
 };
 
 //получение сообщений
-export const setMessageText = (messageText) => {
+export const getMessageText = (messageText) => {
   return {
-    type: "set/message/text",
+    type: "get/message/text",
     payload: messageText,
   };
 };
 
-//отправка сообщении....
+//отправка сообщений
 export const sendMessage = (myId, contactId, messageText) => {
   return (dispatch) => {
     dispatch({
