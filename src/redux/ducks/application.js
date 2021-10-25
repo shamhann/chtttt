@@ -1,5 +1,6 @@
 const initialState = {
   profiles: [],
+  open: true,
   loading: false,
 };
 
@@ -15,6 +16,11 @@ export default function application(state = initialState, action) {
         ...state,
         profiles:action.payload,
         loading: false
+      }
+    case 'profile/open':
+      return {
+        ...state,
+        open: !state.open,
       }
     default:
       return state;
@@ -36,3 +42,8 @@ export const loadProfile = () => {
       });
   };
 };
+export const profileOpen = () => {
+  return {
+    type: 'profile/open'
+  }
+}

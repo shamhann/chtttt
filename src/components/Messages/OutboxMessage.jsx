@@ -13,6 +13,9 @@ function OutboxMessage({ message }) {
   const readMessage = message.read;
   const timeSendMessage = message.time;
 
+  const profileId = useSelector((state) => state.application.profiles._id);
+  const toUserId = message.toUserId;
+
   const handleDeleteMessage = () => {
     dispatch(removeMessage(messageId));
   };
@@ -21,8 +24,9 @@ function OutboxMessage({ message }) {
   );
   return (
     <div className={styles.Outbox}>
-      <div className={styles.OutboxMsge}>
-        <div className={styles.messageText}>{message.content} </div>
+      {toUserId !== profileId ? (
+        <div className={styles.OutboxMsge}>
+          <div className={styles.messageText}>{message.content} </div>
           <div>
             <div className={styles['time-check']}>
               <button className={styles.deleteButton} onClick={handleDeleteMessage}>
@@ -47,7 +51,9 @@ function OutboxMessage({ message }) {
             </div>
           </div>
 
-      </div>
+        </div>
+      ) : ""}
+
     </div>
   );
 }

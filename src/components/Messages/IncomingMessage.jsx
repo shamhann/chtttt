@@ -10,30 +10,36 @@ import dayjs from "dayjs";
 function IncomingMessage({ message }) {
   const readMessage = message.read;
   const timeSendMessage = message.time;
+  const profileId = useSelector((state) => state.application.profiles._id);
+  const toUserId = message.toUserId;
   const id = useParams().id;
   const contacts = useSelector((state) => state.contacts.contacts);
   const contact = contacts.find((contact) => contact._id === id);
 
   return (
-    <div className={styles.Incoming}>
-      <Avatar size={"small"} online={false} contact={contact} />
-      <div className={styles.IncomingMessage}>
-        <div className={styles.messageText}>{message.content} </div>
-        <div className={styles.messageTime}>
-          {dayjs(timeSendMessage).format("HH:mm")}
-        </div>
-        <div>
-          {readMessage === true ? (
-            <div className={styles.check}>
-              <span className="material-icons">done_all</span>
+    <div>
+      {toUserId === profileId ? (
+        <div className={styles.Incoming}>
+          <Avatar size={"small"} online={false} contact={contact} />
+          <div className={styles.IncomingMessage}>
+            <div className={styles.messageText}>{message.content} </div>
+            <div className={styles.messageTime}>
+              {dayjs(timeSendMessage).format("HH:mm")}
             </div>
-          ) : (
-            <div className={styles.check}>
-              <span className="material-icons">check</span>
+            <div>
+              {readMessage === true ? (
+                <div className={styles.check}>
+                  <span className="material-icons">done_all</span>
+                </div>
+              ) : (
+                <div className={styles.check}>
+                  <span className="material-icons">check</span>
+                </div>
+              )}
             </div>
-          )}
+          </div>
         </div>
-      </div>
+      ) : ""}
     </div>
   );
 }

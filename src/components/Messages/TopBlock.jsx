@@ -1,14 +1,22 @@
 import React from "react";
 import styles from "./messages.module.css";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { Link, useParams } from "react-router-dom";
 import ReactLoading from "react-loading";
+import { profileOpen } from '../../redux/ducks/application'
 
 function TopBlock(props) {
   const params = useParams().id;
   const contacts = useSelector((state) => state.contacts.contacts);
+  const dispatch = useDispatch();
   const contact = contacts.find((contact) => contact._id === params);
   const loadingMessages = useSelector((state) => state.messages.loading);
+
+  const open = useSelector(state => state.application.open);
+
+  const handleClickOpen = () => {
+    dispatch(profileOpen(open))
+  }
 
   return (
     <div className={styles.header}>
@@ -46,7 +54,11 @@ function TopBlock(props) {
         </div>
         <div className={styles.headerIcons}>
           <span className="material-icons">call</span>
-          <span className="material-icons">menu</span>
+
+          <button onClick={() => handleClickOpen()}>
+            <span className="material-icons" >menu</span>
+          </button>
+
         </div>
       </div>
     </div>

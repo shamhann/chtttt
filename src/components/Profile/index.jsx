@@ -11,6 +11,7 @@ function Profile() {
   const id = useParams().id;
   const filteredContacts = profiles.filter((contact) => contact._id === id);
 
+
   useEffect(() => {
     dispatch(loadProfile());
   }, [dispatch]);
