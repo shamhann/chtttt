@@ -11,11 +11,17 @@ function Name({ profile }) {
       <h3 className={styles.name}>
         {profile !== undefined ? profile.fullname : null}
         <div className={styles.profileAuthorNameOnline}>
-          {profile?.online === true ? <div> в сети<span className="material-icons">circle</span></div>: "был(а) недавно"}
+          {profile?.online ? (
+            <div>
+              в сети <span className="material-icons">circle</span>
+            </div>
+          ) : (
+            "был(а) недавно"
+          )}
         </div>
       </h3>
       <div className={styles.email}>
-        {profile !== undefined ? <div>@{profile.username}</div> : null}
+        {profile !== undefined && <div>@{profile.username}</div>}
       </div>
       <div className={styles.icon}>
         <div>

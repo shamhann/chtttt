@@ -1,11 +1,11 @@
 import React from "react";
-import Contacts from "../Contacts";
 import Messages from "../Messages";
 import Profile from "../Profile";
 import styles from "./app.module.css";
 import { Switch, Route } from "react-router-dom";
+import Contacts from "../Sidebar";
 
-function App(props) {
+function App() {
   return (
     <div className={styles.app}>
       <Switch>

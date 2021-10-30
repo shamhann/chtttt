@@ -1,0 +1,67 @@
+* {
+  list-style-type: none;
+  text-decoration: none;
+}
+.contactScroll {
+  height: 100vh;
+  padding: 10px;
+  overflow-y: auto;
+}
+.contactScroll::-webkit-scrollbar {
+  width: 0;
+}
+.messageAuthorNameOnline span {
+  font-size: 12px;
+  color: #32b40fff;
+  margin-left: 5px;
+  position: absolute;
+  bottom: 40px;
+}
+.users {
+  width: 360px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 15px;
+  padding: 5px;
+}
+.users-avatar {
+  width: 50px;
+  color: white;
+  text-align: center;
+  padding: 10px;
+  font-size: 20px;
+  background-color: #6aa7ee;
+  border-radius: 50%;
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.6);
+  position: relative;
+}
+.users-names {
+  width: 170px;
+  padding: 0 5px;
+  text-align: left;
+}
+.fullName {
+  color: #343a40;
+  font-size: 20px;
+  font-weight: bold;
+}
+.users-text {
+  font-size: 14px;
+  color: #c0c1c1;
+}
+.users-time {
+  font-size: 14px;
+  color: #c0c1c1;
+  text-align: right;
+}
+.contact-active {
+  background-color: white;
+  width: 360px;
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.2);
+  border-radius: 5px;
+}
+ul {
+  padding: 0;
+  margin-top: 60px;
+}

@@ -1,78 +1,79 @@
 .profileScroll {
-    height: 100vh;
-    padding: 10px;
-    overflow-y: auto;
+  height: 100vh;
+  padding: 10px;
+  overflow-y: auto;
 }
 .profileScroll::-webkit-scrollbar {
-    width: 0;
+  width: 0;
 }
 .profile-title {
-   padding: 0 0 30px 30px;
-    margin: auto;
+  padding: 0 0 30px 30px;
+  margin: auto;
 }
 .profileAuthorNameOnline {
-    text-align: center;
-    margin: auto;
-    font-size: 16px;
-    padding: 10px;
+  text-align: center;
+  margin: auto;
+  font-size: 16px;
+  padding: 10px;
 }
 .profileAuthorNameOnline span {
-    text-align: center;
-    margin: auto;
-    font-size: 12px;
-    padding: 10px;
-    color:  #32B40FFF;
+  text-align: center;
+  margin: auto;
+  font-size: 12px;
+  padding: 10px;
+  color: #32b40fff;
 }
-.avatar{
-    width: 100px;
-    height: 100px;
-    color: white;
-    margin: auto;
-    text-align: center;
-    padding-bottom:  30px;
-    font-size: 70px;
-    background-color: #6aa7ee;
-    border-radius: 50%;
-    box-shadow: 0 0 8px rgba(0,0,0,0.6);
+.avatar {
+  width: 100px;
+  height: 100px;
+  color: white;
+  margin: auto;
+  text-align: center;
+  padding-bottom: 30px;
+  font-size: 70px;
+  background-color: #6aa7ee;
+  border-radius: 50%;
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.6);
 }
-.name{
-    font-size: 20px;
-    text-align: center;
-    margin-top: 30px;
+.name {
+  font-size: 20px;
+  text-align: center;
+  margin-top: 30px;
 }
-.email{
-    text-align: center;
+.email {
+  text-align: center;
 }
-.icon{
-    display: flex;
-    justify-content: space-around;
-    padding: 15px;
-    text-align: center;
-    margin-top: 30px;
+.icon {
+  display: flex;
+  justify-content: space-around;
+  padding: 15px;
+  text-align: center;
+  margin-top: 30px;
 }
-.socialTitle, .mediaTitle {
-    padding-left: 40px;
-    margin: 30px 0 30px 0;
+.socialTitle,
+.mediaTitle {
+  padding-left: 40px;
+  margin: 30px 0 30px 0;
 }
 
-.social{
-    width: 250px;
-    background-color: white;
-    margin: auto;
-    box-shadow: 0 0 10px rgba(0,0,0,0.5);
-    padding: 10px;
+.social {
+  width: 250px;
+  background-color: white;
+  margin: auto;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  padding: 10px;
 }
-.media{
-    width: 250px;
-    background-color: white;
-    margin: auto;
-    box-shadow: 0 0 10px rgba(0,0,0,0.5);
-    padding: 10px;
-    display: flex;
+.media {
+  width: 250px;
+  background-color: white;
+  margin: auto;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  padding: 10px;
+  display: flex;
 }
-.mediaBlue{
-    padding: 15px;
-    margin: 0 15px 0 ;
-    border-radius: 4px;
-    background-color: #89ccf5;
+.mediaBlue {
+  padding: 15px;
+  margin: 0 15px 0;
+  border-radius: 4px;
+  background-color: #89ccf5;
 }

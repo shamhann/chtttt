@@ -5,7 +5,7 @@ import { sendMessage } from "../../redux/ducks/messages";
 import { useParams } from "react-router-dom";
 import PrintInput from "./PrintInput";
 
-function Print(props) {
+function Print() {
   const dispatch = useDispatch();
   const messageText = useSelector((state) => state.messages.messageText);
   const contactId = useParams().id;
@@ -23,9 +23,9 @@ function Print(props) {
         {messageText === "" ? (
           <span className="material-icons">keyboard_voice</span>
         ) : (
-          <button onClick={handleSendMessage}>
-            <span className="material-icons">send</span>
-          </button>
+          <span onClick={handleSendMessage} className="material-icons">
+            send
+          </span>
         )}
       </div>
     </div>

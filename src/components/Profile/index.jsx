@@ -11,7 +11,6 @@ function Profile() {
   const id = useParams().id;
   const filteredContacts = profiles.filter((contact) => contact._id === id);
 
-
   useEffect(() => {
     dispatch(loadProfile());
   }, [dispatch]);
@@ -21,7 +20,7 @@ function Profile() {
       <h4 className={styles["profile-title"]}>Информация</h4>
       <div className={styles.profileScroll}>
         {filteredContacts.map((profile) => {
-          return <ProfileInfo profile={profile} key={profile.id} />;
+          return <ProfileInfo profile={profile} key={profile._id} />;
         })}
       </div>
     </div>

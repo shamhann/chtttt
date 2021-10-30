@@ -1,12 +1,11 @@
 import React from "react";
-import styles from "./messages.module.css";
 import TopBlock from "./TopBlock";
 import MessagesBody from "./MessagesBody";
 import Print from "./Print";
 
-function Messages(props) {
+function Messages() {
   return (
-    <div className={styles.messages}>
+    <div>
       <TopBlock />
       <MessagesBody />
       <Print />

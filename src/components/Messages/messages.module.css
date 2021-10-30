@@ -1,164 +1,163 @@
 .header {
-    display: flex;
-    width: 100%;
+  display: flex;
+  width: 100%;
 }
 
 .header-center-block {
-    width: 90%;
-    height: 40px;
-    margin: auto;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    border-bottom: 1px solid #dedede;
-    text-align: center;
+  width: 90%;
+  height: 40px;
+  margin: auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #dedede;
+  text-align: center;
 }
 .headerLoading {
-    display: flex;
+  display: flex;
 }
 .messageName {
-    margin: auto;
-    display: flex;
-    font-size: 20px
+  margin: auto;
+  display: flex;
+  font-size: 20px;
 }
 .messageAuthorNameOnline span {
-   font-size: 12px;
-    color: #32B40FFF;
-    margin-left: 5px;
+  font-size: 12px;
+  color: #32b40fff;
+  margin-left: 5px;
 }
 .chatContainer {
-    height: 80vh;
-    padding: 10px;
-    overflow-y: auto;
+  height: 80vh;
+  padding: 10px;
+  overflow-y: auto;
 }
 .chatContainer::-webkit-scrollbar {
-    width: 0;
+  width: 0;
 }
 /*
 исходящие сообщения
  */
 .Outbox {
-    display: flex;
-    justify-content: flex-end;
-
+  display: flex;
+  justify-content: flex-end;
 }
- .OutboxMsge {
-    display: flex;
-    padding: 10px;
-    margin-bottom: 10px;
-    background-color: #dcf8c6;
-    border-radius: 15px 15px 0 15px ;
-    margin-left: 10px;
-     justify-content: end;
- }
+.OutboxMessage {
+  display: flex;
+  padding: 10px;
+  margin-bottom: 10px;
+  background-color: #dcf8c6;
+  border-radius: 15px 15px 0 15px;
+  margin-left: 10px;
+  justify-content: end;
+}
 .messageText {
-    max-width: 150px;
-    font-size: 20px;
-    margin-right: 10px;
+  max-width: 150px;
+  font-size: 20px;
+  margin-right: 10px;
 }
 .messageTime {
-    transform: translateY(16px);
-    font-size: 14px;
-    margin: 0 15px;
+  transform: translateY(16px);
+  font-size: 14px;
+  margin: 0 15px;
 }
 .time-check {
-    display: flex;
+  display: flex;
 }
 .check span {
-    transform: translateY(16px);
-    font-size: 20px;
-    color: blue;
+  transform: translateY(16px);
+  font-size: 20px;
+  color: blue;
 }
 /*
 входящие сообщения
  */
 .Incoming {
-    display: flex;
+  display: flex;
 }
 .IncomingMessage {
-    display: flex;
-    max-width: 300px;
-    padding: 10px;
-    margin-bottom: 10px;
-    background-color: #c9fdf7;
-    border-radius: 0 15px 15px 15px ;
-    margin-left: 10px;
+  display: flex;
+  max-width: 300px;
+  padding: 10px;
+  margin-bottom: 10px;
+  background-color: #c9fdf7;
+  border-radius: 0 15px 15px 15px;
+  margin-left: 10px;
 }
 
 .avatar {
-    width: 35px;
-    max-height: 35px;
-    color: white;
-    text-align: center;
-    align-items: center;
-    padding:  5px 10px;
-    font-size: 15px;
-    background-color: #6aa7ee;
-    border-radius: 50%;
-    box-shadow: 0 0 8px rgba(0,0,0,0.6);
+  width: 35px;
+  max-height: 35px;
+  color: white;
+  text-align: center;
+  align-items: center;
+  padding: 5px 10px;
+  font-size: 15px;
+  background-color: #6aa7ee;
+  border-radius: 50%;
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.6);
 }
 .messageDesign {
-    width: 20%;
-    padding: 5px 0;
-    background-color: rgba(236, 234, 234, 0.5);
-    border-radius: 8px;
-    color: black;
-    font-size: 14px;
-    font-weight: bold;
-    margin: 10px auto;
-    text-align: center;
+  width: 20%;
+  padding: 5px 0;
+  background-color: rgba(236, 234, 234, 0.5);
+  border-radius: 8px;
+  color: black;
+  font-size: 14px;
+  font-weight: bold;
+  margin: 10px auto;
+  text-align: center;
 }
 .input-field {
-    width: 100%;
-    padding: 5px 10px;
+  width: 100%;
+  padding: 5px 10px;
 }
 
 .input-field input {
-    width: 100%;
-    padding: 20px;
-    border: none;
-    outline: none;
-    align-items: center;
-    margin-top: 3px;
-    font-size: 18px;
-    font-family: "Roboto", sans-serif;
-    font-weight: 300;
+  width: 100%;
+  padding: 20px;
+  border: none;
+  outline: none;
+  align-items: center;
+  margin-top: 3px;
+  font-size: 18px;
+  font-family: "Roboto", sans-serif;
+  font-weight: 300;
 }
 .footer {
-    width: 95%;
-    margin: auto;
-    display: flex;
-    justify-content: space-evenly;
-    align-items: center;
+  width: 95%;
+  margin: auto;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
 }
 .print span {
-    font-size: 25px;
-    color: rgb(148, 146, 146);
-    margin-left: 10px;
-    cursor: pointer;
+  font-size: 25px;
+  color: rgb(148, 146, 146);
+  margin-left: 10px;
+  cursor: pointer;
 }
-.headerIcons span{
-    width: 40px;
-    justify-content: space-between ;
-    color: #c0c0c0;
-    cursor: pointer;
-    align-items: center;
+.headerIcons span {
+  width: 40px;
+  justify-content: space-between;
+  color: #c0c0c0;
+  cursor: pointer;
+  align-items: center;
 }
 button {
-    border: none;
-    background-color: white;
+  border: none;
+  background-color: white;
 }
 .deleteButton span:hover {
-    background-color:   #dcf8c6;
-    border: none;
-    font-size: 20px;
-    color: red;
+  background-color: #dcf8c6;
+  border: none;
+  font-size: 20px;
+  color: red;
 }
 .deleteButton span {
-    border: none;
-    font-size: 20px;
-    color: #dcf8c6;
+  border: none;
+  font-size: 20px;
+  color: #dcf8c6;
 }
 .deleteButton {
-    background-color:   #dcf8c6;
+  background-color: #dcf8c6;
 }

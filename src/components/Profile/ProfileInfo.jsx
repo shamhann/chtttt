@@ -10,20 +10,17 @@ function ProfileInfo({ profile }) {
   const open = useSelector((state) => state.application.open);
 
   return (
-      <div className={"animate__animated animate__fadeInRightBig"}>
-        <CSSTransition in={open} timeout={10}
-                       unmountOnExit
-                       classNames="my-node"
-        >
-          <div className="animate__animated animate__fadeInRightBig">
-            <Route exact path="/contact/:id?">
-              <Name profile={profile} key={profile.id} />
-              <Social profile={profile} />
-              <Media />
-            </Route>
-          </div>
-        </CSSTransition>
-      </div>
+    <div className={"animate__animated animate__fadeInRightBig"}>
+      <CSSTransition in={open} timeout={10} unmountOnExit classNames="my-node">
+        <div className="animate__animated animate__fadeInRightBig">
+          <Route exact path="/contact/:id?">
+            <Name profile={profile} key={profile._id} />
+            <Social profile={profile} />
+            <Media />
+          </Route>
+        </div>
+      </CSSTransition>
+    </div>
   );
 }
 

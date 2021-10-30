@@ -6,22 +6,22 @@ const initialState = {
 
 export default function application(state = initialState, action) {
   switch (action.type) {
-    case 'profile/load/start':
+    case "profile/load/start":
       return {
         ...state,
-        loading: true
-      }
-    case 'profile/load/success':
+        loading: true,
+      };
+    case "profile/load/success":
       return {
         ...state,
-        profiles:action.payload,
-        loading: false
-      }
-    case 'profile/open':
+        profiles: action.payload,
+        loading: false,
+      };
+    case "profile/open":
       return {
         ...state,
         open: !state.open,
-      }
+      };
     default:
       return state;
   }
@@ -44,6 +44,6 @@ export const loadProfile = () => {
 };
 export const profileOpen = () => {
   return {
-    type: 'profile/open'
-  }
-}
+    type: "profile/open",
+  };
+};

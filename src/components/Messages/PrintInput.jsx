@@ -3,7 +3,7 @@ import styles from "./messages.module.css";
 import { getMessageText } from "../../redux/ducks/messages";
 import { useDispatch, useSelector } from "react-redux";
 
-function PrintInput(props) {
+function PrintInput() {
   const messageText = useSelector((state) => state.messages.messageText);
   const dispatch = useDispatch();
 

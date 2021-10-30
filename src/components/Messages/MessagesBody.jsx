@@ -3,9 +3,9 @@ import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import { loadMessages } from "../../redux/ducks/messages";
 import styles from "./messages.module.css";
-import ContentBlock from "./ContentBlock";
+import MessageWrapper from "./MessageWrapper";
 
-function MessagesBody(props) {
+function MessagesBody() {
   const dispatch = useDispatch();
   const messages = useSelector((state) => state.messages.messages);
   const contactsId = useParams().id;
@@ -17,7 +17,7 @@ function MessagesBody(props) {
     <div className={styles.chatContainer}>
       <div>
         {messages.map((message) => {
-          return <ContentBlock message={message} key={message.id} />;
+          return <MessageWrapper message={message} key={message._id} />;
         })}
       </div>
     </div>

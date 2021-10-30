@@ -8,43 +8,29 @@ import "material-icons/iconfont/material-icons.css";
 import dayjs from "dayjs";
 
 function IncomingMessage({ message }) {
-  const readMessage = message.read;
-  const timeSendMessage = message.time;
-  const profileId = useSelector((state) => state.application.profiles._id);
-  const toUserId = message.toUserId;
+  const time = message.time;
   const id = useParams().id;
   const contacts = useSelector((state) => state.contacts.contacts);
   const contact = contacts.find((contact) => contact._id === id);
 
   return (
     <div>
-      {toUserId === profileId ? (
-        <div className={styles.Incoming}>
+      <div className={styles.Incoming}>
+        <div className={styles.avatar}>
           <Avatar size={"small"} online={false} contact={contact} />
-          <div className={styles.IncomingMessage}>
-            <div className={styles.messageText}>{message.content} </div>
-            <div className={styles.messageTime}>
-              {dayjs(timeSendMessage).format("HH:mm")}
-            </div>
-            <div>
-              {readMessage === true ? (
-                <div className={styles.check}>
-                  <span className="material-icons">done_all</span>
-                </div>
-              ) : (
-                <div className={styles.check}>
-                  <span className="material-icons">check</span>
-                </div>
-              )}
-            </div>
+        </div>
+        <div className={styles.IncomingMessage}>
+          <div className={styles.messageText}>{message.content} </div>
+          <div className={styles.messageTime}>
+            {dayjs(time).format("HH:mm")}
           </div>
         </div>
-      ) : ""}
+      </div>
     </div>
   );
 }
 
 IncomingMessage.propTypes = {
-  content: PropTypes.string.isRequired,
+  message: PropTypes.object,
 };
 export default IncomingMessage;

@@ -3,20 +3,21 @@ import styles from "./messages.module.css";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useParams } from "react-router-dom";
 import ReactLoading from "react-loading";
-import { profileOpen } from '../../redux/ducks/application'
+import { profileOpen } from "../../redux/ducks/application";
+import Online from "../App/Online";
 
-function TopBlock(props) {
+function TopBlock() {
   const params = useParams().id;
   const contacts = useSelector((state) => state.contacts.contacts);
   const dispatch = useDispatch();
   const contact = contacts.find((contact) => contact._id === params);
   const loadingMessages = useSelector((state) => state.messages.loading);
 
-  const open = useSelector(state => state.application.open);
+  const open = useSelector((state) => state.application.open);
 
   const handleClickOpen = () => {
-    dispatch(profileOpen(open))
-  }
+    dispatch(profileOpen(open));
+  };
 
   return (
     <div className={styles.header}>
@@ -42,23 +43,15 @@ function TopBlock(props) {
           ) : (
             <div className={styles.messageName}>
               <b> {contact?.fullname}</b>
-              <div className={styles.messageAuthorNameOnline}>
-                {contact?.online === true ? (
-                  <span className="material-icons">circle</span>
-                ) : (
-                  ""
-                )}
-              </div>
+              <Online contact={contacts} id={contacts._id} />
             </div>
           )}
         </div>
         <div className={styles.headerIcons}>
           <span className="material-icons">call</span>
-
           <button onClick={() => handleClickOpen()}>
-            <span className="material-icons" >menu</span>
+            <span className="material-icons">menu</span>
           </button>
-
         </div>
       </div>
     </div>
